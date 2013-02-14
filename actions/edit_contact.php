@@ -2,11 +2,10 @@
 
 <?php
 // connect to the DB
-require('../config/db.php');
-require('../config/app.php');
-require('../lib/functions.php');
+require_once('../config/db.php');
+require_once('../lib/functions.php');
 
-$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+$conn = connect();
 
 $required = array(
 		'contact_firstname',

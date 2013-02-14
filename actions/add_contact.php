@@ -2,9 +2,8 @@
 <!-- <pre><?php // print_r($_POST);?></pre> -->
 
 <?php
-require('../config/db.php');
-require('../config/app.php');
-require('../lib/functions.php');
+require_once('../config/db.php');
+require_once('../lib/functions.php');
 
 $required = array(
 	'contact_firstname',
@@ -42,7 +41,7 @@ foreach($required as $r) {
 // Add Contact to DB
 
 // Connect to the DB
-$conn = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+$conn = connect();
 
 // Execute query
 $contact_phone = $contact_phone1.$contact_phone2.$contact_phone3;

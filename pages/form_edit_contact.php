@@ -1,8 +1,8 @@
 <?php
 // Connect to the DB
-
-$conn = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
-
+require_once('../config/db.php');
+require_once('../lib/functions.php');
+$conn = connect();
 
 // Execute SELECT query
 $sql = "SELECT * FROM contacts WHERE contact_id={$_GET['id']}";
@@ -16,7 +16,8 @@ extract($contact);
 $conn->close();
 
 ?>
-<form action="update.php" method="post">
+<h2>Edit a Moron</h2>
+<form action="../actions/edit_contact.php" method="post">
 	<label>First Name</label>
 	<input type="text" name="contact_firstname" value="<?php echo $contact_firstname ?>" />
 	<br/>

@@ -1,14 +1,21 @@
 <?php
-//connect
-require('../config/db.php');
-require('../config/app.php');
-require('../lib/functions.php');
+// Import
+require_once('../config/db.php');
+require_once('../lib/functions.php');
 
-$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+// connect
+$conn = connect();
 
-$sql = "DELETE FROM contacts WHERE contact_id={$_POST['id']}";
+// Execute query
+$sql = "DELETE FROM contacts WHERE contact_id={$_POST['contact_id']}";
 $conn->query($sql);
-//close
+
+// close
 $conn->close();
-//redirect
+
+// redirect with message
+$_SESSION['message'] = array (
+		'type' => 'warning',
+		'text' => 'The moron has been erased.'
+);
 header('Location:../list_contacts.php');
