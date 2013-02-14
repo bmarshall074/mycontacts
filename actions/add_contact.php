@@ -1,5 +1,5 @@
 <?php session_start() ?>
-<pre><?php print_r($_POST);?></pre>
+<!-- <pre><?php // print_r($_POST);?></pre> -->
 
 <?php
 require('../config/db.php');

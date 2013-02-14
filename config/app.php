@@ -6,5 +6,5 @@ define('DEFAULT_PAGE','list_contacts');
 $pages = array(
 	'list_contacts' 	=> 'Morons',
 	'list_groups' 		=> 'Groups',
-	'form_add_contact' 	=> 'Add a Moron!!!!!111',
+	'form_add_contact' 	=> 'New Moron',
 );
