@@ -48,7 +48,7 @@ $conn->close();
 // Set message in session data
 $_SESSION['message'] = array(
 		'type' => 'success',
-		'text' => '"<strong>$contact_firstname.$contact_lastname</strong>" has been edited.'
+		'text' => "<strong>$contact_firstname.$contact_lastname</strong> has been edited."
 );
 // redirect
 header('Location:../list_contacts.php');

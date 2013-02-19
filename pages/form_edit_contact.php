@@ -1,7 +1,7 @@
 <?php
 // Connect to the DB
-require_once('../config/db.php');
-require_once('../lib/functions.php');
+require_once('./config/db.php');
+require_once('./lib/functions.php');
 $conn = connect();
 
 // Execute SELECT query
@@ -17,7 +17,7 @@ $conn->close();
 
 ?>
 <h2>Edit a Moron</h2>
-<form action="../actions/edit_contact.php" method="post">
+<form action="actions/edit_contact.php" method="post">
 	<label>First Name</label>
 	<input type="text" name="contact_firstname" value="<?php echo $contact_firstname ?>" />
 	<br/>
@@ -36,4 +36,9 @@ $conn->close();
 	
 	<input type="hidden" name="contact_id" value="<?php echo $_GET['id'];?>"/>
 	<input type="submit" value="Edit" />
+	
+	<div class="form-actions">
+		<button type="submit" class="btn btn-warning"><i class="icon-edit icon-white"></i> Edit Moron</button>
+		<button type="button" class="btn" onclick="window.history.go(-1)">Cancel</button>
+	</div>
 </form>

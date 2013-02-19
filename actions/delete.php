@@ -1,3 +1,4 @@
+<?php session_start()?>
 <?php
 // Import
 require_once('../config/db.php');
@@ -16,6 +17,6 @@ $conn->close();
 // redirect with message
 $_SESSION['message'] = array (
 		'type' => 'warning',
-		'text' => 'The moron has been erased.'
+		'text' => "<strong>$contact_firstname $contact_lastname</strong> has been erased from the Earth."
 );
 header('Location:../list_contacts.php');

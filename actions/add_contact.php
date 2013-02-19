@@ -54,7 +54,7 @@ $conn->close();
 // Set message in session data
 $_SESSION['message'] = array(
 	'type' => 'success',
-	'text' => '"<strong>$contact_firstname.$contact_lastname</strong>" has been successfully added.'
+	'text' => "<strong>$contact_firstname $contact_lastname</strong> has been successfully added."
 );
 
 // Set location header
