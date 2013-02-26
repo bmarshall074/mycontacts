@@ -82,4 +82,39 @@ function radio($name, $options) {
 	}
 	return $radio;
 }
+
+/**
+ * Query the provided table for all rowa, sorted by name, using the fields table_id and table_name
+ * @param String $table name of DB table
+ * @param String $default_value value of first option
+ * @return HTML input element
+ */
+function get_options($table,$default_value=0,$default_name='Select') {
+	$options = array($default_value => $default_name);
+	
+	// Field names
+	$id_field = $table.'_id';
+	$name_field = $table.'_name';
+	
+	// Connect to DB
+	$conn = connect();
+	
+	// Query table for ids and names
+	$sql = "SELECT $id_field, $name_field FROM {$table}s ORDER BY $name_field";
+	$results = $conn->query($sql);
+	
+	// Loop over result set, assing all rows to $options
+	while(($row = $results->fetch_assoc()) != null ) {
+		$key = $row[$id_field];
+		$value = $row[$name_field];
+		$options[$key] = $value;
+	}
+	
+	//Close DB connection
+	$conn->close();
+	
+	// Return options
+	return $options;
+	
+}
 ?>

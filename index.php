@@ -15,6 +15,10 @@ require('lib/functions.php');
 		<!-- MyContacts CSS -->
 		<link rel="stylesheet" type="text/css" href="styles.css" />
 		<title>MyContacts</title>
+		<!-- jQuery JS -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<!-- Bootstrap JS -->
+		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<div id="wrapper" class="container">

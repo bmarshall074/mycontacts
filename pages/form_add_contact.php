@@ -26,6 +26,14 @@
 			<?php echo input('contact_email','required')?>
 		</div>
 	</div>
+	<div class="control-group">
+		<select name="group_id">
+			<?php
+			$options = get_options('group',0,'Select a group.');
+			echo radio('group_id', $options);
+			?>
+		</select>
+	</div>
 	<div class="form-actions">
   		<button type="submit" class="btn btn-success"><i class="icon-plus-sign icon-white"></i> Add Moron</button>
   		<button type="button" class="btn">Cancel</button>

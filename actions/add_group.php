@@ -1,17 +1,14 @@
-<?php session_start()?>
+<?php session_start() ?>
+<!-- <pre><?php // print_r($_POST);?></pre> -->
 
 <?php
-// connect to the DB
 require_once('../config/db.php');
 require_once('../lib/functions.php');
 require_once('fields.php');
 
-$conn = connect();
-
-$required = $fields;
-
 // Extract form data
 extract($_POST);
+
 
 // Validate form data
 foreach($fields as $f) {
@@ -25,25 +22,33 @@ foreach($fields as $f) {
 			
 		//Store form data into session data
 		$_SESSION['POST'] = $_POST;
-
+		
 		// Set location header
-		header('Location:../?p=form_edit_contact');
-
+		header('Location:../?p=form_add_group');
+		
 		// Kill script
 		die();
 	}
 }
 
-// execute query
-$sql = "UPDATE contacts SET contact_firstname='{$_POST['contact_firstname']}', contact_lastname='{$_POST['contact_lastname']}', contact_email='{$_POST['contact_email']}', contact_phone='{$_POST['contact_phone']}' WHERE contact_id='{$_POST['contact_id']}'";
+// Add Contact to DB
+
+// Connect to the DB
+$conn = connect();
+
+// Execute query
+$sql = "INSERT INTO groups (group_name) VALUES ('$group_name')";
 $conn->query($sql);
-// close connection
+
+// Close DB connection
 $conn->close();
+
 // Set message in session data
 $_SESSION['message'] = array(
-		'type' => 'success',
-		'text' => "<strong>$contact_firstname $contact_lastname</strong> has been edited."
+	'type' => 'success',
+	'text' => "<strong>$group_name</strong> has been successfully added."
 );
-// redirect
-header('Location:../?p=list_contacts');
+
+// Set location header
+header('Location:../?p=list_groups');
 ?>

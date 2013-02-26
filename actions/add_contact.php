@@ -4,23 +4,18 @@
 <?php
 require_once('../config/db.php');
 require_once('../lib/functions.php');
+require_once('fields.php');
 
-$required = array(
-	'contact_firstname',
-	'contact_lastname',
-	'contact_email',
-	'contact_phone1',
-	'contact_phone2',
-	'contact_phone3',
-		
-);
 // Extract form data
 extract($_POST);
 
+// Combine phone numbers
+$_POST['contact_phone'] = $_POST['contact_phone1'].$_POST['contact_phone2'].$_POST['contact_phone3'];
+
 // Validate form data
-foreach($required as $r) {
+foreach($fields as $f) {
 	// If invalid, redirect with message
-	if(!isset($_POST[$r]) || $_POST[$r] == '') {
+	if($f['required'] && (!isset($_POST[$f['name']]) || $_POST[$f['name']] == '')) {
 		// Store message into session
 		$_SESSION['message'] = array(
 				'type' => 'danger',
@@ -45,7 +40,7 @@ $conn = connect();
 
 // Execute query
 $contact_phone = $contact_phone1.$contact_phone2.$contact_phone3;
-$sql = "INSERT INTO contacts (contact_firstname,contact_lastname,contact_email,contact_phone) VALUES ('$contact_firstname','$contact_lastname','$contact_email',$contact_phone)";
+$sql = "INSERT INTO contacts (contact_firstname,contact_lastname,contact_email,contact_phone,contact_group) VALUES ('$contact_firstname','$contact_lastname','$contact_email','$contact_phone','$contact_group')";
 $conn->query($sql);
 
 // Close DB connection
