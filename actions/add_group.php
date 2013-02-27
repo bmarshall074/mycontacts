@@ -6,6 +6,10 @@ require_once('../config/db.php');
 require_once('../lib/functions.php');
 require_once('fields.php');
 
+$required = array(
+	'group_name'
+);
+
 // Extract form data
 extract($_POST);
 

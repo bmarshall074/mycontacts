@@ -3,7 +3,7 @@
 		<div class="control-group">
 		<label class="control-label" for="group_name">Group Name</label>
 			<div class="controls">
-				<?php echo input('group_name','required')?>
+				<?php echo input('group_name','Group Name')?>
 			</div>
 		</div>
 		<div class="form-actions">

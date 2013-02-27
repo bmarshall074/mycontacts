@@ -30,7 +30,7 @@
 		<select name="group_id">
 			<?php
 			$options = get_options('group',0,'Select a group.');
-			echo radio('group_id', $options);
+			echo dropdown('group_id', $options);
 			?>
 		</select>
 	</div>
