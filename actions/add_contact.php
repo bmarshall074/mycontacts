@@ -40,8 +40,25 @@ $conn = connect();
 
 // Execute query
 $contact_phone = $contact_phone1.$contact_phone2.$contact_phone3;
-$sql = "INSERT INTO contacts (contact_firstname,contact_lastname,contact_email,contact_phone,contact_group) VALUES ('$contact_firstname','$contact_lastname','$contact_email','$contact_phone','$contact_group')";
+$sql = "INSERT INTO contacts (contact_firstname,contact_lastname,contact_email,contact_phone,group_id) VALUES ('$contact_firstname','$contact_lastname','$contact_email','$contact_phone',$group_id)";
 $conn->query($sql);
+
+// Check for MySQL error
+if($conn->errno > 0) {
+	// Put SQL error into session
+	$error = "<strong>MySQL Error # {$conn->errno}</strong>:";
+	$error .= "{$conn->error}</br><strong>SQL:</strong>#sql";
+	$_SESSION['message'] = array (
+		'type' => 'danger',
+		'text' => $error	
+	);
+	
+	// set location header
+	header('Location:../?p=list_contacts');
+	
+	//kill script
+	die();
+}
 
 // Close DB connection
 $conn->close();

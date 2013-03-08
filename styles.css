@@ -3,6 +3,7 @@
 header {
 	background:url(images/contact.png) no-repeat;
 	padding:20px 0px 30px 210px;
+	padding-bottom:55px;
 }
 
 header a {
@@ -38,6 +39,6 @@ input.phone.span2 {
 	width:80px;
 }
 
-nav {
-	margin-top:50px;
+nav div.input-append button {
+	height:inherit !important;
 }

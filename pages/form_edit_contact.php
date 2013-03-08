@@ -18,6 +18,7 @@ $conn->close();
 ?>
 <h2>Edit a Moron</h2>
 <form action="actions/edit_contact.php" method="post">
+	<input type="hidden" name="linenum" value="<?php echo $_GET['contact_id'] ?>" />
 	<label>First Name</label>
 	<input type="text" name="contact_firstname" value="<?php echo $contact_firstname ?>" />
 	<br/>
@@ -34,8 +35,12 @@ $conn->close();
 	<input type="text" name="contact_phone" value="<?php echo $contact_phone ?>" />
 	<br/>
 	
-	<input type="hidden" name="contact_id" value="<?php echo $_GET['id'];?>"/>
-	<input type="submit" value="Edit" />
+	<div class="control-group">
+		<?php
+		$options = get_options('group',$group_id,'Select a group');
+		echo dropdown('group_id', $options);
+		?>
+	</div>
 	
 	<div class="form-actions">
 		<button type="submit" class="btn btn-warning"><i class="icon-edit icon-white"></i> Edit Moron</button>

@@ -8,6 +8,6 @@
 		</div>
 		<div class="form-actions">
   			<button type="submit" class="btn btn-success"><i class="icon-plus-sign icon-white"></i> Add Group</button>
-  			<button type="button" class="btn">Cancel</button>
+  			<a href="./?p=list_groups"><button type="button" class="btn">Cancel</button></a>
 		</div>
 	</form>
